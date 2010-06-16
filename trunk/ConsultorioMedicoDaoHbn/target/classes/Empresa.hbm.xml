@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated 15/06/2010 07:43:52 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="net.kielsaenz.consultorio.model.Empresa" table="EMPRESA"
+		schema="CONSULTORIO">
+		<id name="empresaId" type="integer">
+			<column name="EMPRESA_ID" precision="10" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">empresa_seq</param>
+			</generator>
+		</id>
+		<property name="ruc" type="string">
+			<column name="RUC" length="11" not-null="true" unique="true" />
+		</property>
+		<property name="razonSocial" type="string">
+			<column name="RAZON_SOCIAL" length="50" not-null="true" />
+		</property>
+		<property name="activo" type="char">
+			<column name="ACTIVO" length="1" not-null="true" />
+		</property>
+		<list name="susursales" inverse="true">
+			<key>
+				<column name="EMPRESA_ID" precision="10" scale="0" not-null="true" />
+			</key>
+			<list-index></list-index>
+			<one-to-many class="net.kielsaenz.consultorio.model.Sucursal" />
+		</list>
+		<map name="children" inverse="true">
+			<key column="parent_id" />
+			<map-key column="name" type="string" />
+			<one-to-many class="Child" />
+		</map>
+
+	</class>
+</hibernate-mapping>
