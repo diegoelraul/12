@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<!--  MySQL -->
+        <!--
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://srvmysql:3306/consultorio_medico</property>
+        <property name="hibernate.connection.username">consultorio</property>
+        <property name="hibernate.connection.password">c0nsult0r10</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        -->
+        <!--  PostGre SQL -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jjdbc:postgresql://srvpostgre/consultorio_medico</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">adminadmin</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <!-- Usando el proveedor de pool de conecciones C3P0 -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">300</property>
+        <!-- SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.default_schema">cita_medica</property>
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+        <!-- Lista de mapeos -->
+        <mapping class="net.kielsaenz.consultorio.model.Empresa" />
+        <!-- <mapping class="pe.com.citasmedicas.model.Especialidad" />
+        <mapping class="pe.com.citasmedicas.model.Horario" />
+        <mapping class="pe.com.citasmedicas.model.Medico" />
+        <mapping class="pe.com.citasmedicas.model.Paciente" />
+        <mapping class="pe.com.citasmedicas.model.Persona" />
+        <mapping class="pe.com.citasmedicas.model.Usuario" /> -->
+    </session-factory>
+</hibernate-configuration>
