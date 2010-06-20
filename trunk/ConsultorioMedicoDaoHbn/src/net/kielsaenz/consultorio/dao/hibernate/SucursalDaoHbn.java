@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -156,34 +157,120 @@ public class SucursalDaoHbn implements SucursalDao{
 	@Override
 	public List<Sucursal> getSucursalesPorEmpresa(Integer empresaId)
 			throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		if(empresaId == null){
+			throw new DaoException("consultorio.dao.error.1100", locale);
+		}
+		List<Sucursal> sucursales = null;
+		Session hs = null;
+		Transaction htx = null;
+		SessionFactory hsf = null;
+		try {
+			hsf = HibernateUtil.getSessionFactory();
+			hs = hsf.getCurrentSession();
+			htx = hs.beginTransaction();
+			Query hqlQuery = hs
+					.createQuery("from Sucursal s where s.sucursalId.empresaId = :empresaId order by s.nombre asc");
+			hqlQuery.setParameter("empresaId", empresaId, Hibernate.INTEGER);
+			sucursales = hqlQuery.list();
+			htx.commit();
+		} catch (HibernateException e) {
+			if (htx != null && htx.isActive()) {
+				try {
+					htx.rollback();
+				} catch (HibernateException e2) {
+					throw new DaoException("consultorio.dao.error.0001", locale);
+				}
+			}
+			sucursales = new ArrayList<Sucursal>();
+			e.printStackTrace();
+			throw new DaoException(e.hashCode(), e.getMessage());
+		}
+		return sucursales;
 	}
 
 	@Override
 	public List<Sucursal> getSucursalesPorEmpresa(Empresa empresa)
 			throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		if(empresa == null){
+			throw new DaoException("consultorio.dao.error.1103", locale);
+		}
+		return getSucursalesPorEmpresa(empresa.getEmpresaId());
 	}
 
 	@Override
 	public List<Sucursal> getSucursalesPorEmpresaNombre(Integer empresaId,
 			String nombre, boolean aplicarLike, int tipo) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		if(empresaId == null){
+			throw new DaoException("consultorio.dao.error.1100", locale);
+		}
+		List<Sucursal> sucursales = null;
+		Session hs = null;
+		Transaction htx = null;
+		SessionFactory hsf = null;
+		try {
+			hsf = HibernateUtil.getSessionFactory();
+			hs = hsf.getCurrentSession();
+			htx = hs.beginTransaction();
+			Query hqlQuery = hs
+					.createQuery("from Sucursal s where s.sucursalId.empresaId = :empresaId and s.nombre = :nombre order by s.nombre asc");
+			hqlQuery.setParameter("empresaId", empresaId, Hibernate.INTEGER);
+			hqlQuery.setParameter("nombre", nombre, Hibernate.STRING);
+			sucursales = hqlQuery.list();
+			htx.commit();
+		} catch (HibernateException e) {
+			if (htx != null && htx.isActive()) {
+				try {
+					htx.rollback();
+				} catch (HibernateException e2) {
+					throw new DaoException("consultorio.dao.error.0001", locale);
+				}
+			}
+			sucursales = new ArrayList<Sucursal>();
+			e.printStackTrace();
+			throw new DaoException(e.hashCode(), e.getMessage());
+		}
+		return sucursales;
 	}
 
 	@Override
 	public List<Sucursal> getSucursalesPorEmpresaNombre(Empresa empresa,
 			String nombre, boolean aplicarLike, int tipo) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		if(empresa == null){
+			throw new DaoException("consultorio.dao.error.1103", locale);
+		}
+		if(nombre == null || nombre.isEmpty()){
+			throw new DaoException("consultorio.dao.error.1203", locale);
+		}
+		return getSucursalesPorEmpresaNombre(empresa.getEmpresaId(), nombre, aplicarLike, tipo);
 	}
 
 	@Override
 	public boolean insertar(Sucursal sucursal) throws DaoException {
-		return false;
+		if (sucursal == null) {
+			throw new DaoException("consultorio.dao.error.1103", locale);
+		}
+		Session hs = null;
+		Transaction htx = null;
+		SessionFactory hsf = null;
+		try {
+			hsf = HibernateUtil.getSessionFactory();
+			hs = hsf.getCurrentSession();
+			htx = hs.beginTransaction();
+			SucursalId sucursalId = (SucursalId) hs.save(sucursal);
+			sucursal.setSucursalId(sucursalId);
+			htx.commit();
+		} catch (HibernateException e) {
+			if (htx != null && htx.isActive()) {
+				try {
+					htx.rollback();
+				} catch (HibernateException e2) {
+					throw new DaoException("consultorio.dao.error.0001", locale);
+				}
+			}
+			e.printStackTrace();
+			throw new DaoException(e.hashCode(), e.getMessage());
+		}
+		return true;
 	}
 
 	@Override
