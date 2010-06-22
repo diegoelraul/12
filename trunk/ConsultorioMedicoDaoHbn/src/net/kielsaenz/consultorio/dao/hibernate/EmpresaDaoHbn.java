@@ -20,7 +20,7 @@ import net.kielsaenz.consultorio.model.Empresa;
 public class EmpresaDaoHbn implements EmpresaDao {
 
 	private Locale locale;
-	
+
 	public EmpresaDaoHbn() {
 		this(Locale.getDefault());
 	}
@@ -128,21 +128,21 @@ public class EmpresaDaoHbn implements EmpresaDao {
 				if (aplicarLike) {
 					StringBuffer param01 = new StringBuffer("%").append(
 							razonSocial).append("%");
-					hqlQuery.setParameter("razonSocial", param01.toString().toLowerCase(),
-							Hibernate.STRING);
+					hqlQuery.setParameter("razonSocial", param01.toString()
+							.toLowerCase(), Hibernate.STRING);
 				} else {
-					hqlQuery.setParameter("razonSocial", razonSocial.toLowerCase(),
-							Hibernate.STRING);
+					hqlQuery.setParameter("razonSocial", razonSocial
+							.toLowerCase(), Hibernate.STRING);
 				}
 			} else if (tipo == InterfaceDao.TO_UPPER_CASE) {
 				if (aplicarLike) {
 					StringBuffer param01 = new StringBuffer("%").append(
 							razonSocial).append("%");
-					hqlQuery.setParameter("razonSocial", param01.toString().toUpperCase(),
-							Hibernate.STRING);
+					hqlQuery.setParameter("razonSocial", param01.toString()
+							.toUpperCase(), Hibernate.STRING);
 				} else {
-					hqlQuery.setParameter("razonSocial", razonSocial.toUpperCase(),
-							Hibernate.STRING);
+					hqlQuery.setParameter("razonSocial", razonSocial
+							.toUpperCase(), Hibernate.STRING);
 				}
 			} else {
 				if (aplicarLike) {

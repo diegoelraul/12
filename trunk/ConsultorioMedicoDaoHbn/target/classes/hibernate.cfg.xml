@@ -3,13 +3,11 @@
 <hibernate-configuration>
     <session-factory>
     	<!--  MySQL -->
-        <!--
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://srvmysql:3306/consultorio_medico</property>
-        <property name="hibernate.connection.username">consultorio</property>
-        <property name="hibernate.connection.password">c0nsult0r10</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/consultorio</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">admin</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        -->
         <!--  PostGre SQL -->
         <!--
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
@@ -19,11 +17,11 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         -->
         <!--  Oracle -->
-        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <!--<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
         <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:dbKiel</property>
         <property name="hibernate.connection.username">consultorio</property>
         <property name="hibernate.connection.password">c0nsult0r10</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>-->
         <!-- Usando el proveedor de pool de conecciones C3P0 -->
         <!--<property name="hibernate.c3p0.min_size">5</property>
         <property name="hibernate.c3p0.max_size">20</property>
@@ -41,7 +39,6 @@
         <!-- Lista de mapeos -->
         <mapping class="net.kielsaenz.consultorio.model.Empresa" />
         <mapping class="net.kielsaenz.consultorio.model.Sucursal" />
-        <mapping class="net.kielsaenz.consultorio.model.SucursalId" />
         <mapping class="net.kielsaenz.consultorio.model.Ubigeo" />
         <mapping class="net.kielsaenz.consultorio.model.UbigeoId" />
         <mapping class="net.kielsaenz.consultorio.model.Departamento" />

@@ -35,5 +35,10 @@
 			<version>3.4.0.GA</version>
 			<type>jar</type>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.12</version>
+		</dependency>
 	</dependencies>
 </project>
