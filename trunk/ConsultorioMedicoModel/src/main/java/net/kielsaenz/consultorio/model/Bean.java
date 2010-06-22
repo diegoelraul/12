@@ -10,6 +10,8 @@ public class Bean implements Serializable {
 
 	public static String ACTIVO = "S";
 	public static String NO_ACTIVO = "N";
+	public static String SI = "S";
+	public static String NO = "N";
 	
     /**
      * Obtiene el nombre de la clase

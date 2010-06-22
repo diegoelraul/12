@@ -4,58 +4,82 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sucursal")
+@Table(name="SUCURSAL")
 public class Sucursal extends Bean{
 
-	@EmbeddedId
-	private SucursalId sucursalId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="SUCURSAL_ID")
+	private Integer sucursalId;
 	
-	@ManyToOne(targetEntity=net.kielsaenz.consultorio.model.Empresa.class, optional=false)
-    @JoinColumn(name="empresaId")
+	@ManyToOne(targetEntity=Empresa.class, optional=false)
+    @JoinColumn(name="EMPRESA_ID")
 	private Empresa empresa;
 	
-	@Column(name="nombre", nullable=false, length=20)
+	@Column(name="NOMBRE", nullable=false, length=20)
 	private String nombre;
 	
-	@Column(name="Direccion", nullable=false, length=40)
+	@Column(name="DIRECCION", nullable=false, length=40)
 	private String direccion;
 	
-	@Column(name="Urbanizacion", nullable=true, length=25)
+	@Column(name="URBANIZACION", nullable=true, length=25)
 	private String urbanizacion;
     
 	@Embedded
 	private UbigeoId ubigeoId;
     
-	@Column(name="Telefonos", nullable=true, length=20)
+	@Column(name="TELEFONOS", nullable=true, length=20)
 	private String telefonos;
 	
-	@Column(name="Principal", nullable=false, length=1)
+	@Column(name="PRINCIPAL", nullable=false, length=1)
 	private String principal;
 	
-	@Column(name="Activo", nullable=false, length=1)
+	@Column(name="ACTIVO", nullable=false, length=1)
 	private String activo;
 	
-	public SucursalId getSucursalId() {
+	public Sucursal() {
+		super();
+	}
+
+	public Sucursal(Integer sucursalId, Empresa empresa, String nombre,
+			String direccion, String urbanizacion, UbigeoId ubigeoId,
+			String telefonos, String principal, String activo) {
+		super();
+		this.sucursalId = sucursalId;
+		this.empresa = empresa;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.urbanizacion = urbanizacion;
+		this.ubigeoId = ubigeoId;
+		this.telefonos = telefonos;
+		this.principal = principal;
+		this.activo = activo;
+	}
+
+	public Integer getSucursalId() {
 		return sucursalId;
 	}
-	
-	public void setSucursalId(SucursalId sucursalId) {
+
+	public void setSucursalId(Integer sucursalId) {
 		this.sucursalId = sucursalId;
 	}
-	
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	
+
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -110,5 +134,14 @@ public class Sucursal extends Bean{
 
 	public void setActivo(String activo) {
 		this.activo = activo;
+	}
+	
+	public void toUpperCase(){
+		this.nombre = nombre.toUpperCase();
+		this.direccion = direccion.toUpperCase();
+		this.urbanizacion = urbanizacion.toUpperCase();
+		this.telefonos = telefonos.toUpperCase();
+		this.principal = principal.toUpperCase();
+		this.activo = activo.toUpperCase();
 	}
 }

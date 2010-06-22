@@ -21,6 +21,16 @@ public class Departamento {
 	@Column(name="Nombre")
 	private String nombre;
 	
+	public Departamento() {
+		super();
+	}
+
+	public Departamento(String departamentoId, String nombre) {
+		super();
+		this.departamentoId = departamentoId;
+		this.nombre = nombre;
+	}
+
 	public String getDepartamentoId() {
 		return departamentoId;
 	}

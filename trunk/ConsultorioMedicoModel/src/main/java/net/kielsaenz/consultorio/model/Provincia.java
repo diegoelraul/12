@@ -24,6 +24,17 @@ public class Provincia {
 	@Column(name="Nombre")
 	private String nombre;
 
+	public Provincia() {
+		super();
+	}
+
+	public Provincia(String departamentoId, String provinciaId, String nombre) {
+		super();
+		this.departamentoId = departamentoId;
+		this.provinciaId = provinciaId;
+		this.nombre = nombre;
+	}
+
 	public String getDepartamentoId() {
 		return departamentoId;
 	}

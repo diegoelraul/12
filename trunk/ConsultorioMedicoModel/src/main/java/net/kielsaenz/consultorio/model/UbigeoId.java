@@ -15,6 +15,17 @@ public class UbigeoId extends Bean{
 	@Column(name="Distrito_Id")
     private String distritoId;
     
+	public UbigeoId(){
+		super();
+	}
+	
+	public UbigeoId(String departamentoId, String provinciaId, String distritoId) {
+		super();
+		this.departamentoId = departamentoId;
+		this.provinciaId = provinciaId;
+		this.distritoId = distritoId;
+	}
+
 	public String getDepartamentoId() {
 		return departamentoId;
 	}

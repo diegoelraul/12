@@ -27,6 +27,19 @@ public class Distrito extends Bean {
 	@Column(name = "Nombre")
 	private String nombre;
 
+	public Distrito() {
+		super();
+	}
+
+	public Distrito(String departamentoId, String provinciaId,
+			String distritoId, String nombre) {
+		super();
+		this.departamentoId = departamentoId;
+		this.provinciaId = provinciaId;
+		this.distritoId = distritoId;
+		this.nombre = nombre;
+	}
+
 	public String getDepartamentoId() {
 		return departamentoId;
 	}

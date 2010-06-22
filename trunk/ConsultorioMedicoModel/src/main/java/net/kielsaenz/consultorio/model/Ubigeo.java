@@ -30,4 +30,8 @@ public class Ubigeo extends Bean {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public void toUpperCase(){
+		this.nombre = nombre.toUpperCase();
+	}
 }
