@@ -8,12 +8,12 @@ public class DaoException extends Exception{
 	private String key;
 	
 	public DaoException(String key){
-		super(ResourceBundle.getBundle("net.kielsaenz.consultorio.service.exception.msg", Locale.getDefault()).getString(key));
+		super(ResourceBundle.getBundle("net.kielsaenz.consultorio.dao.exception.msg", Locale.getDefault()).getString(key));
 		this.key = key;
 	}
 	
 	public DaoException(String key, Locale locale){
-		super(ResourceBundle.getBundle("net.kielsaenz.consultorio.service.exception.msg", locale).getString(key));
+		super(ResourceBundle.getBundle("net.kielsaenz.consultorio.dao.exception.msg", locale).getString(key));
 		this.key = key;
 	}
 
