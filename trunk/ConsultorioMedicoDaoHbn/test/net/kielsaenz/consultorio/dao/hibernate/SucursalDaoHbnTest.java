@@ -111,7 +111,7 @@ public class SucursalDaoHbnTest {
 			} else {
 				principal = Bean.SI;
 			}
-			sucursal.setPrincipal(Bean.SI);
+			sucursal.setPrincipal(principal);
 			Assert.assertTrue(sucursalDao.actualizar(sucursal));
 			sucursal = null;
 			sucursal = sucursalDao.getSucursalPorId(new Integer(sucursales.get(
