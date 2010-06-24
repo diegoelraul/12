@@ -166,7 +166,7 @@ public class SucursalDaoHbn implements SucursalDao{
 			hs = hsf.getCurrentSession();
 			htx = hs.beginTransaction();
 			Query hqlQuery = hs
-					.createQuery("from Sucursal s where s.empresa.empresaId = :empresaId order by s.nombre asc");
+					.createQuery("from Sucursal s where s.empresa = :empresaId order by s.nombre asc");
 			hqlQuery.setParameter("empresaId", empresaId, Hibernate.INTEGER);
 			sucursales = hqlQuery.list();
 			htx.commit();
@@ -288,7 +288,7 @@ public class SucursalDaoHbn implements SucursalDao{
 	@Override
 	public boolean insertar(Sucursal sucursal) throws DaoException {
 		if (sucursal == null) {
-			throw new DaoException("consultorio.dao.error.1103", locale);
+			throw new DaoException("consultorio.dao.error.1201", locale);
 		}
 		Session hs = null;
 		Transaction htx = null;
