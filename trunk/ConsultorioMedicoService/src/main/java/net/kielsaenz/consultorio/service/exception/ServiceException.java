@@ -8,12 +8,12 @@ public class ServiceException extends Exception{
 	private String key;
 	
 	public ServiceException(String key){
-		super(ResourceBundle.getBundle("net.kielsaenz.consultorio.service.exception.msg", Locale.getDefault()).getString(key));
+		super(ResourceBundle.getBundle("msgService", Locale.getDefault()).getString(key));
 		this.key = key;
 	}
 	
 	public ServiceException(String key, Locale locale){
-		super(ResourceBundle.getBundle("net.kielsaenz.consultorio.service.exception.msg", locale).getString(key));
+		super(ResourceBundle.getBundle("msgService", locale).getString(key));
 		this.key = key;
 	}
 	
