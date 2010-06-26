@@ -44,6 +44,7 @@
         <mapping class="net.kielsaenz.consultorio.model.Departamento" />
         <mapping class="net.kielsaenz.consultorio.model.Provincia" />
         <mapping class="net.kielsaenz.consultorio.model.Distrito" />
+        <mapping class="net.kielsaenz.consultorio.model.DepProvDist" />
         <mapping class="net.kielsaenz.consultorio.model.Usuario" />
     </session-factory>
 </hibernate-configuration>
