@@ -7,13 +7,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title><%=getServletContext().getInitParameter("empresa")%> -
             Login</title>
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/recursos/css/principal.css" />
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/recursos/css/login.css" />
     </head>
-    <body id="body">
-        <div id="main_loguin">
-            <div class="loguin_bg">
+    <body class="principal">
+        <div id="main_login">
+            <div class="login_bg">
                 <div class="title_login">
                     <div class="form_login">
-                        <form action="login" name="/logeo"
+                        <s:form action="login" namespace="/logeo"
                               method="POST" name="frmLogin">
                             <table border="0" cellpadding="0" cellspacing="0" align="center"
                                    width="210px">
@@ -32,10 +34,12 @@
                                     <td colspan="3">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td align="center">&nbsp;</td>
-                                    <td align="left"><s:submit name="btnEnviar" value="Enviar"
-                                              cssClass="x7g"
-                                              cssStyle="BACKGROUND-IMAGE: url(resources/img/btn-bg1.gif)" /></td>
+                                    <td align="rigth">
+                                        <s:submit name="btnEnviar"
+                                                  value="Enviar"
+                                                  cssClass="x7g"
+                                                  cssStyle="BACKGROUND-IMAGE: url(recursos/img/btn-bg1.gif)" />
+                                    </td>
                                 </tr>
                             </table>
                             <br />
@@ -45,11 +49,9 @@
                                     <td colspan="3"><span class="errorMessage">${errorMsg}</span></td>
                                 </tr>
                             </table>
-                        </form>
+                        </s:form>
                     </div>
                 </div>
-                <img src="<s:url value='/resources/img/footer_logo.gif' />" alt=""
-                     title="" align="right" />
             </div>
             <div id="pie">
                 <%@ include file="pie.jsp"%>

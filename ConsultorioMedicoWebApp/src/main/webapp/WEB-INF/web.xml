@@ -8,8 +8,13 @@
     </context-param>
 
     <context-param>
+        <param-name>empresa-ruc</param-name>
+        <param-value>20492218783</param-value>
+    </context-param>
+
+    <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:applicationContext*.xml</param-value>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
 
     <!-- >>>>> LISTENERS <<<<< -->
