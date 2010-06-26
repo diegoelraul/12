@@ -27,7 +27,8 @@
         <dependency>
             <groupId>net.kielsaenz</groupId>
             <artifactId>consultorio.medico.model</artifactId>
-            <version>${net.kielsaenz.version}</version>
+            <version>1.0</version>
+            <type>jar</type>
         </dependency>
 
         <dependency>
