@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kielsaenz</groupId>
-    <artifactId>ConsultorioMedicoServiceImpl</artifactId>
+    <artifactId>consultorio.medico.service.implementacion</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
 
@@ -29,12 +29,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${org.springframework.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${org.springframework.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -70,7 +72,6 @@
     </dependencies>
 
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -81,9 +82,12 @@
                 </configuration>
             </plugin>
         </plugins>
-
         <finalName>ConsultorioMedicoWebApp</finalName>
-
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
 </project>
