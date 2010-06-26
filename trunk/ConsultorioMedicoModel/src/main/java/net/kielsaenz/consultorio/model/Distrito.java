@@ -8,67 +8,64 @@ import javax.persistence.Table;
 import javax.persistence.NamedQuery;
 
 @Entity
-@Table(name = "Distrito")
-@NamedQueries( {
-		@NamedQuery(name = "Distrito.getDistritoPorId", query = "SELECT d FROM Distrito d WHERE d.departamentoId = :departamentoId AND d.provinciaId = :provinciaId AND d.distritoId = :distritoId ORDER BY d.nombre ASC"),
-		@NamedQuery(name = "Distrito.getDistritosPorProvincia", query = "SELECT d FROM Distrito d WHERE d.departamentoId = :departamentoId AND d.provinciaId = :provinciaId ORDER BY d.nombre ASC")})
+@Table(name = "DISTRITO")
+@NamedQueries({
+    @NamedQuery(name = "Distrito.getDistritoPorId", query = "SELECT d FROM Distrito d WHERE d.departamentoId = :departamentoId AND d.provinciaId = :provinciaId AND d.distritoId = :distritoId ORDER BY d.nombre ASC"),
+    @NamedQuery(name = "Distrito.getDistritosPorProvincia", query = "SELECT d FROM Distrito d WHERE d.departamentoId = :departamentoId AND d.provinciaId = :provinciaId ORDER BY d.nombre ASC")})
 public class Distrito extends Bean {
 
-	@Column(name = "Departamento_Id")
-	private String departamentoId;
+    @Column(name = "DEPARTAMENTO_ID")
+    private String departamentoId;
+    @Column(name = "PROVINCIA_ID")
+    private String provinciaId;
+    @Id
+    @Column(name = "DISTRITO_ID")
+    private String distritoId;
+    @Column(name = "NOMBRE")
+    private String nombre;
 
-	@Column(name = "Provincia_Id")
-	private String provinciaId;
+    public Distrito() {
+        super();
+    }
 
-	@Id
-	@Column(name = "Distrito_Id")
-	private String distritoId;
+    public Distrito(String departamentoId, String provinciaId,
+            String distritoId, String nombre) {
+        super();
+        this.departamentoId = departamentoId;
+        this.provinciaId = provinciaId;
+        this.distritoId = distritoId;
+        this.nombre = nombre;
+    }
 
-	@Column(name = "Nombre")
-	private String nombre;
+    public String getDepartamentoId() {
+        return departamentoId;
+    }
 
-	public Distrito() {
-		super();
-	}
+    public void setDepartamentoId(String departamentoId) {
+        this.departamentoId = departamentoId;
+    }
 
-	public Distrito(String departamentoId, String provinciaId,
-			String distritoId, String nombre) {
-		super();
-		this.departamentoId = departamentoId;
-		this.provinciaId = provinciaId;
-		this.distritoId = distritoId;
-		this.nombre = nombre;
-	}
+    public String getProvinciaId() {
+        return provinciaId;
+    }
 
-	public String getDepartamentoId() {
-		return departamentoId;
-	}
+    public void setProvinciaId(String provinciaId) {
+        this.provinciaId = provinciaId;
+    }
 
-	public void setDepartamentoId(String departamentoId) {
-		this.departamentoId = departamentoId;
-	}
+    public String getDistritoId() {
+        return distritoId;
+    }
 
-	public String getProvinciaId() {
-		return provinciaId;
-	}
+    public void setDistritoId(String distritoId) {
+        this.distritoId = distritoId;
+    }
 
-	public void setProvinciaId(String provinciaId) {
-		this.provinciaId = provinciaId;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public String getDistritoId() {
-		return distritoId;
-	}
-
-	public void setDistritoId(String distritoId) {
-		this.distritoId = distritoId;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

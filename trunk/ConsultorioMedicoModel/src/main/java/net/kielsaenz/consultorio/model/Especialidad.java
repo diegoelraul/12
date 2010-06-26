@@ -16,24 +16,21 @@ import javax.persistence.Table;
  * @author dew - Grupo 04
  */
 @Entity
-@Table(name="especialidad", schema="cita_medica")
+@Table(name = "ESPECIALIDAD")
 public class Especialidad extends Bean {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="especialidadId", nullable=false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ESPECIALIDAD_ID", nullable = false)
     private Integer especialidadId;
-    
-    @Column(name="nombre", nullable=false, length=25)
+    @Column(name = "NOMBRE", nullable = false, length = 25)
     private String nombre;
-
-    @ManyToMany(targetEntity=net.kielsaenz.consultorio.model.Medico.class)
-    @JoinTable(name="medico_especialidad",
-        joinColumns=
-            @JoinColumn(name="especialidadId", referencedColumnName="especialidadId"),
-        inverseJoinColumns=
-            @JoinColumn(name="medicoId", referencedColumnName="personaId")
-    )
+    @ManyToMany(targetEntity = net.kielsaenz.consultorio.model.Medico.class)
+    @JoinTable(name = "medico_especialidad",
+    joinColumns =
+    @JoinColumn(name = "especialidadId", referencedColumnName = "especialidadId"),
+    inverseJoinColumns =
+    @JoinColumn(name = "medicoId", referencedColumnName = "personaId"))
     private List<Medico> medicos;
 
     /**
@@ -78,4 +75,3 @@ public class Especialidad extends Bean {
         this.medicos = medicos;
     }
 }
-
