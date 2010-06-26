@@ -1,5 +1,6 @@
 package net.kielsaenz.consultorio.service.implementacion;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,7 +69,7 @@ public class EmpresaServiceImpl implements EmpresaService {
                 return empresaDao.getEmpresaPorRazonSocial(razonSocial,
                         aplicarLike, tipo);
             }
-            return null;
+            return new ArrayList<Empresa>();
         } catch (DaoException d) {
             throw d;
         } catch (ServiceException s) {
@@ -95,7 +96,7 @@ public class EmpresaServiceImpl implements EmpresaService {
         try {
             // Se valida la empresa
             if (validarEmpresaNoNulo(empresa) && validarRuc(empresa.getRuc())) {
-                return empresaDao.insertar(empresa);
+                return empresaDao.actualizar(empresa);
             } else {
                 return false;
             }
@@ -136,6 +137,7 @@ public class EmpresaServiceImpl implements EmpresaService {
                     && validarRuc(empresa.getRuc())
                     && validarRucNoRepetido(empresa.getRuc())
                     && validarRazonSocialNoRepetido(empresa.getRazonSocial())) {
+                empresa.toUpperCase();
                 return empresaDao.insertar(empresa);
             } else {
                 return false;
@@ -149,8 +151,9 @@ public class EmpresaServiceImpl implements EmpresaService {
         }
     }
 
-    private boolean validarEmpresaNoNulo(Empresa empresa)
-            throws ServiceException, DaoException, Exception {
+    @Override
+    public boolean validarEmpresaNoNulo(Empresa empresa)
+            throws ServiceException {
         // Se verifica que la empresa no sea nula
         if (empresa == null) {
             throw new ServiceException("consultorio.service.error.1104", locale);
@@ -158,8 +161,9 @@ public class EmpresaServiceImpl implements EmpresaService {
         return true;
     }
 
-    private boolean validarEmpresaIdNoRepetido(Integer empresaId)
-            throws ServiceException, DaoException, Exception {
+    @Override
+    public boolean validarEmpresaIdNoRepetido(Integer empresaId)
+            throws ServiceException, DaoException {
         // Se verifica que el ID no sea nulo
         if (validarEmpresaIdNoNulo(empresaId)) {
             // Se verifica que el ID de la empresa no este repetido
@@ -172,15 +176,17 @@ public class EmpresaServiceImpl implements EmpresaService {
         return true;
     }
 
-    private boolean validarEmpresaIdNoNulo(Integer empresaId) throws Exception {
+    @Override
+    public boolean validarEmpresaIdNoNulo(Integer empresaId) throws ServiceException {
         // Se verifica que el ID no sea nulo
         if (empresaId == null) {
-            throw new ServiceException("consultorio.service.error.1108", locale);
+            throw new ServiceException("consultorio.service.error.1105", locale);
         }
         return true;
     }
 
-    private boolean validarRuc(String ruc) throws ServiceException, Exception {
+    @Override
+    public boolean validarRuc(String ruc) throws ServiceException {
         // Se verifica que el ruc no sea nulo
         if (validarRucNoNulo(ruc)) {
             // Se verifica que el ruc este compuesto por números
@@ -197,16 +203,18 @@ public class EmpresaServiceImpl implements EmpresaService {
         return true;
     }
 
-    private boolean validarRucNoNulo(String ruc) throws Exception {
+    @Override
+    public boolean validarRucNoNulo(String ruc) throws ServiceException {
         // Se verifica que el ruc no sea nulo
-        if (StringUtils.isEmpty(ruc)) {
+        if (StringUtils.isBlank(ruc)) {
             throw new ServiceException("consultorio.service.error.1107", locale);
         }
         return true;
     }
 
-    private boolean validarRucNoRepetido(String ruc) throws ServiceException,
-            DaoException, Exception {
+    @Override
+    public boolean validarRucNoRepetido(String ruc) throws ServiceException,
+            DaoException {
         // Se verifica que el ruc no esté registrado
         Empresa empresaAux = this.getEmpresaPorRUC(ruc);
         if (empresaAux != null) {
@@ -215,17 +223,19 @@ public class EmpresaServiceImpl implements EmpresaService {
         return true;
     }
 
-    private boolean validarRazonSocialNoNulo(String razonSocial)
-            throws Exception {
+    @Override
+    public boolean validarRazonSocialNoNulo(String razonSocial)
+            throws ServiceException {
         // Se verifica que el ruc no sea nulo
-        if (StringUtils.isEmpty(razonSocial)) {
+        if (StringUtils.isBlank(razonSocial)) {
             throw new ServiceException("consultorio.service.error.1109", locale);
         }
         return true;
     }
 
-    private boolean validarRazonSocialNoRepetido(String razonSocial)
-            throws ServiceException, DaoException, Exception {
+    @Override
+    public boolean validarRazonSocialNoRepetido(String razonSocial)
+            throws ServiceException, DaoException {
         // Se verifica que la razón social no esté registrada
         List<Empresa> empresasAux = this.getEmpresaPorRazonSocial(razonSocial,
                 false, InterfaceDao.TO_UPPER_CASE);

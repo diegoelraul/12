@@ -9,12 +9,19 @@
        default-autowire="byType">
 
     <bean id="empresaDao" class="net.kielsaenz.consultorio.dao.hibernate.EmpresaDaoHbn" />
-	<bean id="ubigeoDao" class="net.kielsaenz.consultorio.dao.hibernate.UbigeoDaoHbn" />
-	<bean id="sucursalDao" class="net.kielsaenz.consultorio.dao.hibernate.SucursalDaoHbn" />
+    <bean id="ubigeoDao" class="net.kielsaenz.consultorio.dao.hibernate.UbigeoDaoHbn" />
+    <bean id="sucursalDao" class="net.kielsaenz.consultorio.dao.hibernate.SucursalDaoHbn" />
+    <bean id="usuarioDao" class="net.kielsaenz.consultorio.dao.hibernate.UsuarioDaoHbn" />
 
     <bean id="empresaService" class="net.kielsaenz.consultorio.service.implementacion.EmpresaServiceImpl">
         <property name="empresaDao" ref="empresaDao" />
     </bean>
+
+    <bean id="usuarioService" class="net.kielsaenz.consultorio.service.implementacion.UsuarioServiceImpl">
+        <property name="usuarioDao" ref="usuarioDao" />
+        <property name="empresaService" ref="empresaService" />
+    </bean>
+
     <!--  
     <bean id="ubigeoService" class="net.kielsaenz.consultorio.service.implementacion.UbigeoServiceImpl">
         <property name="ubigeoDao" ref="ubigeoDao" />
