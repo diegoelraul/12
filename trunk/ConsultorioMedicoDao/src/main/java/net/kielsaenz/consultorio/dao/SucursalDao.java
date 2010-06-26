@@ -9,29 +9,29 @@ import net.kielsaenz.consultorio.model.Sucursal;
 
 public interface SucursalDao {
 
-	public Locale getLocale();
+    public Locale getLocale();
 
-	public void setLocale(Locale locale);
+    public void setLocale(Locale locale);
 
-	public List<Sucursal> getSucursales() throws DaoException;
+    public List<Sucursal> getSucursales() throws DaoException;
 
-	public Sucursal getSucursalPorId(Integer sucursalId) throws DaoException;
+    public Sucursal getSucursalPorId(Integer sucursalId) throws DaoException;
 
-	public List<Sucursal> getSucursalesPorEmpresa(Empresa empresa)
-			throws DaoException;
+    public List<Sucursal> getSucursalesPorEmpresa(Empresa empresa)
+            throws DaoException;
 
-	public List<Sucursal> getSucursalesPorEmpresa(Integer empresaId)
-			throws DaoException;
+    public List<Sucursal> getSucursalesPorEmpresa(Integer empresaId)
+            throws DaoException;
 
-	public List<Sucursal> getSucursalesPorEmpresaNombre(Empresa empresa,
-			String nombre, boolean aplicarLike, int tipo) throws DaoException;
+    public List<Sucursal> getSucursalesPorEmpresaNombre(Empresa empresa,
+            String nombre, boolean aplicarLike, int tipo) throws DaoException;
 
-	public List<Sucursal> getSucursalesPorEmpresaNombre(Integer empresaId,
-			String nombre, boolean aplicarLike, int tipo) throws DaoException;
+    public List<Sucursal> getSucursalesPorEmpresaNombre(Integer empresaId,
+            String nombre, boolean aplicarLike, int tipo) throws DaoException;
 
-	public boolean insertar(Sucursal sucursal) throws DaoException;
+    public boolean insertar(Sucursal sucursal) throws DaoException;
 
-	public boolean eliminar(Sucursal sucursal) throws DaoException;
+    public boolean eliminar(Sucursal sucursal) throws DaoException;
 
-	public boolean actualizar(Sucursal sucursal) throws DaoException;
+    public boolean actualizar(Sucursal sucursal) throws DaoException;
 }
