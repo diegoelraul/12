@@ -29,8 +29,8 @@ public class Sucursal extends Bean {
     private String direccion;
     @Column(name = "URBANIZACION", nullable = true, length = 25)
     private String urbanizacion;
-    //@Embedded
-    //private UbigeoId ubigeoId;
+    @Embedded
+    private UbigeoId ubigeoId;
     @Column(name = "TELEFONOS", nullable = true, length = 20)
     private String telefonos;
     @Column(name = "PRINCIPAL", nullable = false, length = 1)
@@ -58,7 +58,7 @@ public class Sucursal extends Bean {
         this.nombre = nombre;
         this.direccion = direccion;
         this.urbanizacion = urbanizacion;
-        //this.ubigeoId = ubigeoId;
+        this.ubigeoId = ubigeoId;
         this.telefonos = telefonos;
         this.principal = principal;
         this.activo = activo;
@@ -111,7 +111,7 @@ public class Sucursal extends Bean {
     public void setTelefonos(String telefonos) {
         this.telefonos = telefonos;
     }
-/*
+
     public UbigeoId getUbigeoId() {
         return ubigeoId;
     }
@@ -119,7 +119,7 @@ public class Sucursal extends Bean {
     public void setUbigeoId(UbigeoId ubigeoId) {
         this.ubigeoId = ubigeoId;
     }
-*/
+
     public String getPrincipal() {
         return principal;
     }
