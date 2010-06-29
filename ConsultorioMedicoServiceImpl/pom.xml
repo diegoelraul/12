@@ -53,13 +53,13 @@
 
         <dependency>
             <groupId>net.kielsaenz</groupId>
-            <artifactId>consultorio.medico.dao.hibernate</artifactId>
+            <artifactId>consultorio.medico.service</artifactId>
             <version>${net.kielsaenz.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.kielsaenz</groupId>
-            <artifactId>consultorio.medico.service</artifactId>
+            <artifactId>consultorio.medico.dao.hibernate</artifactId>
             <version>${net.kielsaenz.version}</version>
         </dependency>
 
