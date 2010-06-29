@@ -209,7 +209,7 @@ public class EmpresaServiceImplTest {
         try {
             empresa = empresaService.getEmpresaPorRUC("20492218783");
             Assert.assertNotNull(empresa);
-            Assert.assertEquals(empresa.getSucursales().size(), 1);
+            Assert.assertEquals(empresa.getSucursales().size(), 2);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertTrue(false);
