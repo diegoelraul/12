@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+#main_sucursal{
+    width:1000px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+.login_bg{
+    width:792px;
+    height:240px;
+    clear:both;
+    padding-top:50px;
+    border:solid;
+    border-color:#CFE0F1;
+    background-color:#FFFFFF;
+    background:url(../img/box_loguin_bg.gif) repeat-x ;
+}
+.form_login{
+    padding: 60px 0px 0px 230px;
+    margin:auto;
+}
