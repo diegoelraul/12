@@ -81,4 +81,26 @@ public class MedicoEspecialidadSucursal extends Bean {
     public void toLowerCase() {
         this.activo = activo.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MedicoEspecialidadSucursal other = (MedicoEspecialidadSucursal) obj;
+        if (this.medicoEspecialidadSucursalPK != other.medicoEspecialidadSucursalPK && (this.medicoEspecialidadSucursalPK == null || !this.medicoEspecialidadSucursalPK.equals(other.medicoEspecialidadSucursalPK))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + (this.medicoEspecialidadSucursalPK != null ? this.medicoEspecialidadSucursalPK.hashCode() : 0);
+        return hash;
+    }
 }

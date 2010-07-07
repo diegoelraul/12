@@ -123,4 +123,26 @@ public class Usuario extends Bean {
         //this.password = password.toLowerCase();
         this.activo = activo.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.usuarioId != other.usuarioId && (this.usuarioId == null || !this.usuarioId.equals(other.usuarioId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + (this.usuarioId != null ? this.usuarioId.hashCode() : 0);
+        return hash;
+    }
 }

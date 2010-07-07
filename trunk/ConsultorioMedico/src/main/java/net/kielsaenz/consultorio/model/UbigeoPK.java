@@ -62,4 +62,34 @@ public class UbigeoPK extends Bean {
 
     @Override
     public void toLowerCase() {}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UbigeoPK other = (UbigeoPK) obj;
+        if ((this.departamentoId == null) ? (other.departamentoId != null) : !this.departamentoId.equals(other.departamentoId)) {
+            return false;
+        }
+        if ((this.provinciaId == null) ? (other.provinciaId != null) : !this.provinciaId.equals(other.provinciaId)) {
+            return false;
+        }
+        if ((this.distritoId == null) ? (other.distritoId != null) : !this.distritoId.equals(other.distritoId)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + (this.departamentoId != null ? this.departamentoId.hashCode() : 0);
+        hash = 37 * hash + (this.provinciaId != null ? this.provinciaId.hashCode() : 0);
+        hash = 37 * hash + (this.distritoId != null ? this.distritoId.hashCode() : 0);
+        return hash;
+    }
 }

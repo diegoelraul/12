@@ -59,6 +59,7 @@ public class MedicoDaoHbnTest {
             medico.setEmpresa(empresa);
             medico.setTelefonoFijo("2790623");
             medico.setTelefonoCelular("99846835");
+            medico.setNroColegiatura("54875");
             medico.setFechaNacimiento(new Date(new GregorianCalendar(1981, 1, 20, 0, 0, 0).getTimeInMillis()));
             medico.setDepProvDist(new DepProvDist(new UbigeoPK("15", "01", "10"), null, null, null));
             medico.setActivo(Bean.NO_ACTIVO);

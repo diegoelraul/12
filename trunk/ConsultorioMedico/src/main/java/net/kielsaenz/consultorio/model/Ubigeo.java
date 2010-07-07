@@ -57,4 +57,26 @@ public class Ubigeo extends Bean {
     public void toLowerCase() {
         this.nombre = nombre.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ubigeo other = (Ubigeo) obj;
+        if (this.ubigeoPK != other.ubigeoPK && (this.ubigeoPK == null || !this.ubigeoPK.equals(other.ubigeoPK))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + (this.ubigeoPK != null ? this.ubigeoPK.hashCode() : 0);
+        return hash;
+    }
 }
