@@ -136,9 +136,6 @@ public class PersonaDaoHbn implements PersonaDao {
         if (empresa == null) {
             throw new DaoException("consultorio.dao.error.1103", locale);
         }
-        if (nombre == null || nombre.isEmpty()) {
-            throw new DaoException("consultorio.dao.error.1302", locale);
-        }
         return getPersonasPorEmpresaNombre(empresa.getEmpresaId(), nombre, aplicarLike);
     }
 
@@ -162,12 +159,12 @@ public class PersonaDaoHbn implements PersonaDao {
             Query hqlQuery = null;
             StringBuilder query = new StringBuilder();
             query.append("select p from Persona p where p.empresa = :empresaId and ");
-            query.append("UPPER(p.nombre) ");
+            query.append("UPPER(p.nombres) ");
 
             if (aplicarLike) {
-                query.append("like :nombre");
+                query.append("like :nombres");
             } else {
-                query.append("= :nombre");
+                query.append("= :nombres");
             }
 
             hqlQuery = hs.createQuery(query.toString());
@@ -175,10 +172,10 @@ public class PersonaDaoHbn implements PersonaDao {
             if (aplicarLike) {
                 StringBuffer param01 = new StringBuffer("%").append(nombre).append("%");
                 hqlQuery.setParameter("empresaId", empresaId, Hibernate.INTEGER);
-                hqlQuery.setParameter("nombre", param01.toString(), Hibernate.STRING);
+                hqlQuery.setParameter("nombres", param01.toString(), Hibernate.STRING);
             } else {
                 hqlQuery.setParameter("empresaId", empresaId, Hibernate.INTEGER);
-                hqlQuery.setParameter("nombre", nombre, Hibernate.STRING);
+                hqlQuery.setParameter("nombres", nombre, Hibernate.STRING);
             }
 
             personas = hqlQuery.list();
@@ -202,9 +199,6 @@ public class PersonaDaoHbn implements PersonaDao {
             String apellidoPaterno, boolean aplicarLike) throws DaoException {
         if (empresa == null) {
             throw new DaoException("consultorio.dao.error.1103", locale);
-        }
-        if (apellidoPaterno == null || apellidoPaterno.isEmpty()) {
-            throw new DaoException("consultorio.dao.error.1303", locale);
         }
         return getPersonasPorEmpresaApPaterno(empresa.getEmpresaId(), apellidoPaterno, aplicarLike);
     }
@@ -273,9 +267,6 @@ public class PersonaDaoHbn implements PersonaDao {
         if (empresa == null) {
             throw new DaoException("consultorio.dao.error.1103", locale);
         }
-        if (apellidoMaterno == null || apellidoMaterno.isEmpty()) {
-            throw new DaoException("consultorio.dao.error.1304", locale);
-        }
         return getPersonasPorEmpresaApMaterno(empresa.getEmpresaId(), apellidoMaterno, aplicarLike);
     }
 
@@ -339,9 +330,6 @@ public class PersonaDaoHbn implements PersonaDao {
             String nroDocumento, boolean aplicarLike) throws DaoException {
         if (empresa == null) {
             throw new DaoException("consultorio.dao.error.1103", locale);
-        }
-        if (nroDocumento == null || nroDocumento.isEmpty()) {
-            throw new DaoException("consultorio.dao.error.1305", locale);
         }
         return getPersonasPorEmpresaNroDocumento(empresa.getEmpresaId(), nroDocumento, aplicarLike);
     }

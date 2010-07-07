@@ -188,7 +188,7 @@ public class UbigeoServiceImpl implements UbigeoService {
             throw new ServiceException("consultorio.service.error.1700", locale);
         }
         // Se valida que el id contenga solo numeros
-        if (StringUtils.isNumeric(departamentoId)) {
+        if (!StringUtils.isNumeric(departamentoId)) {
             throw new ServiceException("consultorio.service.error.1701", locale);
         }
         // se valida que el id tenga dos caracteres
@@ -204,7 +204,7 @@ public class UbigeoServiceImpl implements UbigeoService {
             throw new ServiceException("consultorio.service.error.1703", locale);
         }
         // Se valida que el id contenga solo numeros
-        if (StringUtils.isNumeric(provinciaId)) {
+        if (!StringUtils.isNumeric(provinciaId)) {
             throw new ServiceException("consultorio.service.error.1704", locale);
         }
         // se valida que el id tenga dos caracteres
@@ -220,7 +220,7 @@ public class UbigeoServiceImpl implements UbigeoService {
             throw new ServiceException("consultorio.service.error.1706", locale);
         }
         // Se valida que el id contenga solo numeros
-        if (StringUtils.isNumeric(distritoId)) {
+        if (!StringUtils.isNumeric(distritoId)) {
             throw new ServiceException("consultorio.service.error.1707", locale);
         }
         // se valida que el id tenga dos caracteres

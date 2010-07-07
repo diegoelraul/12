@@ -63,4 +63,26 @@ public class Departamento extends Bean {
     public void toLowerCase() {
         this.nombre = nombre.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Departamento other = (Departamento) obj;
+        if ((this.departamentoId == null) ? (other.departamentoId != null) : !this.departamentoId.equals(other.departamentoId)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + (this.departamentoId != null ? this.departamentoId.hashCode() : 0);
+        return hash;
+    }
 }

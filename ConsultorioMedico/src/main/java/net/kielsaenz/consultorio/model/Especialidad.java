@@ -107,4 +107,26 @@ public class Especialidad extends Bean {
         this.nombre = nombre.toLowerCase();
         this.activo = activo.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Especialidad other = (Especialidad) obj;
+        if (this.especialidadId != other.especialidadId && (this.especialidadId == null || !this.especialidadId.equals(other.especialidadId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + (this.especialidadId != null ? this.especialidadId.hashCode() : 0);
+        return hash;
+    }
 }

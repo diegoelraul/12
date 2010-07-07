@@ -21,6 +21,7 @@
 
     <package name="sucursal" namespace="/sucursal" extends="consultorio">
         <action name="sucursalEliminar" class="sucursalEliminarAction"></action>
+        <action name="sucursalNuevo" class="sucursalNuevoAction"></action>
     </package>
 
 </struts>

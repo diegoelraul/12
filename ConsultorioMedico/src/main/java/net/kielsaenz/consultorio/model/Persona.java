@@ -144,27 +144,6 @@ public class Persona extends Bean {
     }
 
     /**
-     * @return fecha nacimiento formateada
-     */
-    public String getFechaNacimientoFormat(String format) {
-        DateFormat df = new SimpleDateFormat(format);
-        return df.format(fechaNacimiento);
-    }
-
-    /**
-     * @return edad
-     */
-    public int getEdad() {
-
-        Calendar cal1 = new GregorianCalendar();
-        cal1.setTimeInMillis(this.fechaNacimiento.getTime());
-        Calendar cal2 = new GregorianCalendar();
-        cal2.setTimeInMillis(new Date().getTime());
-
-        return cal2.get(Calendar.YEAR) - cal1.get(Calendar.YEAR);
-    }
-
-    /**
      * @return the nroDocumento
      */
     public String getNroDocumento() {
@@ -312,5 +291,27 @@ public class Persona extends Bean {
         this.telefonoFijo = telefonoFijo.toLowerCase();
         this.telefonoCelular = telefonoCelular.toLowerCase();
         this.eMail = eMail.toLowerCase();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        if (this.personaId != other.personaId && (this.personaId == null || !this.personaId.equals(other.personaId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (this.personaId != null ? this.personaId.hashCode() : 0);
+        return hash;
     }
 }

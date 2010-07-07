@@ -166,11 +166,11 @@ public class PacienteDaoHbnTest {
     @Test
     public void getPacientesPorEmpresaApMaterno(){
         try {
-            pacientes = pacienteDao.getPacientesPorEmpresaApMaterno(empresa, "ZuNiGa", true);
+            pacientes = pacienteDao.getPacientesPorEmpresaApMaterno(empresa, "ZuÑiGa", true);
             Assert.assertNotNull(pacientes);
             Assert.assertTrue(pacientes.size() > 0);
             pacientes = null;
-            pacientes = pacienteDao.getPacientesPorEmpresaApMaterno(empresa.getEmpresaId(), "ZuNiGa", false);
+            pacientes = pacienteDao.getPacientesPorEmpresaApMaterno(empresa.getEmpresaId(), "ZuÑiGa", false);
             Assert.assertNotNull(pacientes);
             Assert.assertTrue(pacientes.size() > 0);
         } catch (Exception e) {

@@ -167,4 +167,26 @@ public class Sucursal extends Bean {
         this.principal = principal.toLowerCase();
         this.activo = activo.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sucursal other = (Sucursal) obj;
+        if (this.sucursalId != other.sucursalId && (this.sucursalId == null || !this.sucursalId.equals(other.sucursalId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + (this.sucursalId != null ? this.sucursalId.hashCode() : 0);
+        return hash;
+    }
 }

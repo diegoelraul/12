@@ -90,7 +90,7 @@ public class PersonaDaoHbnTest {
             personas = null;
             personas = personaDao.getPersonasPorEmpresaNombre(empresa.getEmpresaId(), "KiEl", false);
             Assert.assertNotNull(personas);
-            Assert.assertTrue(personas.size() == 0);
+            Assert.assertTrue(personas.isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertTrue(false);

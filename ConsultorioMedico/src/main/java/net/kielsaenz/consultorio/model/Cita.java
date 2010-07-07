@@ -308,4 +308,26 @@ public class Cita extends Bean {
         this.analisis = analisis.toLowerCase();
         this.observaciones = observaciones.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cita other = (Cita) obj;
+        if (this.citaId != other.citaId && (this.citaId == null || !this.citaId.equals(other.citaId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + (this.citaId != null ? this.citaId.hashCode() : 0);
+        return hash;
+    }
 }

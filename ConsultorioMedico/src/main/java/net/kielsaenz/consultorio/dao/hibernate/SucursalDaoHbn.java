@@ -188,9 +188,6 @@ public class SucursalDaoHbn implements SucursalDao {
         if (empresa == null) {
             throw new DaoException("consultorio.dao.error.1103", locale);
         }
-        if (nombre == null || nombre.isEmpty()) {
-            throw new DaoException("consultorio.dao.error.1202", locale);
-        }
         return getSucursalesPorEmpresaNombre(empresa.getEmpresaId(), nombre, aplicarLike);
     }
 

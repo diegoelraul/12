@@ -8,54 +8,50 @@
     <version>1.0</version>
     <name>ConsultorioMedico JEE5 Webapp</name>
     <url>http://maven.apache.org</url>
-
     <properties>
         <org.springframework.version>3.0.3.RELEASE</org.springframework.version>
         <org.apache.struts.version>2.1.8.1</org.apache.struts.version>
         <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
     </properties>
-
     <dependencies>
-
-        <!-- Web -->
-
+        <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
-
+        <!-- JSF -->
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>com.springsource.com.sun.faces</artifactId>
+            <version>1.2.0.09</version>
+        </dependency>
+        <!-- Web -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
         <!-- Utilitarios -->
-
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.5</version>
         </dependency>
-
         <!-- Struts -->
-
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
@@ -67,19 +63,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-codebehind-plugin</artifactId>
             <version>${org.apache.struts.version}</version>
         </dependency>
-        
-        <dependency>
+        <!--<dependency>
             <groupId>com.jgeppert.struts2.jquery</groupId>
             <artifactId>struts2-jquery-plugin</artifactId>
             <version>2.2.2</version>
-        </dependency>
-
+        </dependency>-->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
@@ -107,72 +100,82 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- Spring -->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.beans</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.context</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.core</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.test</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.web</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- Hibernate -->
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>jta</artifactId>
             <version>1.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
             <version>1.4.2</version>
         </dependency>
-
         <dependency>
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.8.0.GA</version>
         </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>3.4.0.GA</version>
         </dependency>
-
+        <!-- Drivers -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.12</version>
         </dependency>
-
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.milestone</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Milestones</name>
+            <url>http://repository.springsource.com/maven/bundles/milestone</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.snapshot</id>
+            <name>SpringSource Enterprise Bundle Repository - Snapshot Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/snapshot</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>

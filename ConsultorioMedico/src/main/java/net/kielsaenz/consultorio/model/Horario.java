@@ -181,4 +181,26 @@ public class Horario extends Bean {
     public void toLowerCase() {
         this.activo = activo.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Horario other = (Horario) obj;
+        if (this.horarioId != other.horarioId && (this.horarioId == null || !this.horarioId.equals(other.horarioId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (this.horarioId != null ? this.horarioId.hashCode() : 0);
+        return hash;
+    }
 }

@@ -107,4 +107,26 @@ public class Empresa extends Bean {
         this.ruc = ruc.toLowerCase();
         this.activo = activo.toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Empresa other = (Empresa) obj;
+        if (this.empresaId != other.empresaId && (this.empresaId == null || !this.empresaId.equals(other.empresaId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + (this.empresaId != null ? this.empresaId.hashCode() : 0);
+        return hash;
+    }
 }
